@@ -1,10 +1,12 @@
 package com.example.avani.sampleapp.activity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.avani.sampleapp.ApiCall;
 import com.example.avani.sampleapp.R;
 import com.example.avani.sampleapp.pojo.Coffee;
 
@@ -13,9 +15,11 @@ import java.util.ArrayList;
 public class SplashScreen extends AppCompatActivity {
 
     private int SPLASH_TIME_OUT = 5000;
-
+    String myUrl = "https://api.github.com/users/Avanikothari22";
     ArrayList<Coffee> myStaticCoffees;
-
+    String result;
+    AsyncTask getRequest = new ApiCall();
+    getRequest.execute()
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
