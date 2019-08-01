@@ -2,6 +2,8 @@ package com.example.avani.sampleapp;
 
 import android.os.AsyncTask;
 
+import com.example.avani.sampleapp.listener.DataListener;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -9,6 +11,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class ApiCall extends AsyncTask<String, Integer, String> {
+
+    private DataListener dataListener;
 
     @Override
     protected void onPreExecute() {
@@ -18,6 +22,7 @@ public class ApiCall extends AsyncTask<String, Integer, String> {
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
+        dataListener.onDataReceieved(result);
     }
 
     @Override
@@ -51,6 +56,14 @@ public class ApiCall extends AsyncTask<String, Integer, String> {
         }
         return result;
     }
+    private String myMethod(String myValue) {
+        //handle value
+        return myValue;
     }
+
+    public void setDataListener(DataListener listener) {
+        this.dataListener = listener;
+    }
+}
 
 
